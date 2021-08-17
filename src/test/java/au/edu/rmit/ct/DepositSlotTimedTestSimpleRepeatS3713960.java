@@ -11,6 +11,9 @@ package au.edu.rmit.ct;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.time.Duration;
+import java.time.temporal.ChronoUnit;
+
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
@@ -41,15 +44,13 @@ class DepositSlotTimedTestSimpleRepeatS3713960 {
 	void tearDown() throws Exception {
 	}
 
-	// @Test
-	// @RepeatedTest(10)
-    // @DisplayName("Depositslottimed repeat test")
-	// void repratTestDepositslottimed(){
-	// 	DepositSlotTimed time1 = new DepositSlotTimed("AN", 5000);
-	// 	assertTimeout(5008, () ->{
-	// 		time1.wait(5000);
-	// 	});
-
-
-
+	@Test
+	@RepeatedTest(10)
+    @DisplayName("Depositslottimed repeat test")
+	void repratTestDepositslottimed() throws Exception{
+		DepositSlotTimed time1 = new DepositSlotTimed("AN", 2000);
+		assertTimeout(Duration.of(2001, ChronoUnit.MILLIS), () -> {
+			time1.checkTimer();
+		});
+	}
 }
