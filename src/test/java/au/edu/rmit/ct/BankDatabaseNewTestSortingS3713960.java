@@ -11,6 +11,7 @@ package au.edu.rmit.ct;
 import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.AfterEach;
@@ -66,7 +67,18 @@ class BankDatabaseNewTestSortingS3713960 {
 		BD1.add(CA9);
 		BD1.add(CA10);
 		assertEquals(10, BD1.size());
-		
+		BD1.sortByTotalBalance();
+		List<CustomerAccount> L1 = BD1.export();
+		for (int i = 0; i < 9; i++)
+		{
+			CustomerAccount CurrentP; 
+			CurrentP = L1.get(i);
+			CustomerAccount NextP;
+			NextP = L1.get(i+1);
+			System.out.println("cur = " + CurrentP.getTotalBalance() + ", next = " + NextP.getTotalBalance());
+
+			assertEquals(true, CurrentP.getAvailableBalance() <= NextP.getAvailableBalance());
+		}
 	}
 		
 }
