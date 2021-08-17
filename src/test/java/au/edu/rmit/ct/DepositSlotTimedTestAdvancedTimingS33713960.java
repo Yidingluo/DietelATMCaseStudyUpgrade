@@ -15,6 +15,7 @@ import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 /*
@@ -40,8 +41,20 @@ class DepositSlotTimedTestAdvancedTimingS33713960 {
 	}
 
 	@Test
-	void test() {
-		fail("Not yet implemented");
+	@DisplayName("test the Deposit Slot will not allow deposit to be received before it's activated")
+	void notAllowBeforeActivated() throws Exception {
+		DepositSlotTimed time1 = new DepositSlotTimed("Slot1", 2000);
+		assertEquals(false, time1.isOpenForDeposit());
+		assertEquals(false, time1.receiveEnvelope());
+	}
+
+	@Test
+	@DisplayName("test allow deposits during the period of activation")
+	void allowDuringActivation() throws Exception {
+		DepositSlotTimed time1 = new DepositSlotTimed("Slot2", 2000);
+		time1.activateSlotWithTimedShut();
+		Thread.sleep(5000);
+		assertEquals(false, time1.isEnvelopeReceived());
 	}
 
 }
