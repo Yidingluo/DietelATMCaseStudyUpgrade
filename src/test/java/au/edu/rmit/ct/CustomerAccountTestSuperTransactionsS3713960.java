@@ -113,7 +113,7 @@ class CustomerAccountTestSuperTransactionsS3713960 {
 			CA1 = new CustomerAccount(11111, 1111, 100.00, 200.00, "AN", "GN", 111);
 			BankDatabaseNew BD1 = new BankDatabaseNew();
 			BD1.add(CA1);
-			double alb1 = BD1.getAvailableBalance(111222);
+			double gab1 = BD1.getAvailableBalance(111222);
 			BD1.clear();
 		} catch (Exception e) {
 			fail("There are no exceptions here");
@@ -131,7 +131,7 @@ class CustomerAccountTestSuperTransactionsS3713960 {
 			CA1 = new CustomerAccount(11111, 1111, 100.00, 200.00, "AN", "GN", 111);
 			BankDatabaseNew BD1 = new BankDatabaseNew();
 			BD1.add(CA1);
-			double alb1 = BD1.getTotalBalance(111333);
+			double gtb1 = BD1.getTotalBalance(111333);
 			BD1.clear();
 		} catch (Exception e) {
 			fail("There are no exceptions here");
