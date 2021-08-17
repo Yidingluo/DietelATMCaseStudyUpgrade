@@ -10,7 +10,6 @@
 package au.edu.rmit.ct;
 
 import static org.junit.jupiter.api.Assertions.*;
-import static org.junit.jupiter.api.Assertions.assertThrows;
 import java.util.ArrayList;
 
 import org.junit.jupiter.api.AfterAll;
