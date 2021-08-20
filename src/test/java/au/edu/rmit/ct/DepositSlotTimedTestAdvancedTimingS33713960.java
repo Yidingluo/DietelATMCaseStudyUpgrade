@@ -53,8 +53,19 @@ class DepositSlotTimedTestAdvancedTimingS33713960 {
 	void allowDuringActivation() throws Exception {
 		DepositSlotTimed time1 = new DepositSlotTimed("Slot2", 2000);
 		time1.activateSlotWithTimedShut();
-		Thread.sleep(5000);
-		assertEquals(false, time1.isEnvelopeReceived());
+		Thread.sleep(1000);
+		assertEquals(true, time1.isOpenForDeposit());
+	}
+
+	@Test
+	@DisplayName("test once again stop allowing deposits after the period of activation")
+	void notAllowAfterOnceActivation() throws Exception {
+		DepositSlotTimed time1 = new DepositSlotTimed("Slot3", 2000);
+		time1.activateSlotWithTimedShut();
+		Thread.sleep(2000);
+		assertEquals(true, time1.isOpenForDeposit());
+		Thread.sleep(1000);
+		assertEquals(false, time1.isOpenForDeposit());
 	}
 
 }
